@@ -7,7 +7,7 @@ import java.util.*
 class Client {
     fun main() {
         val sender = Sender("localhost", 1050)
-        val message = "Hello"
+        val message = "HelloWorldAll"
 
 
         val timer = Timer()
