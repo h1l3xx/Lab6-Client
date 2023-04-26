@@ -28,7 +28,7 @@ class SenderProgram {
 
     fun mailing(mess: String) {
         val sender = startSender()
-        val receiverAddress = InetSocketAddress("172.28.110.31", 1050)
+        val receiverAddress = InetSocketAddress("192.168.1.107", 3000)
         sendMessage(sender, mess, receiverAddress)
     }
 }

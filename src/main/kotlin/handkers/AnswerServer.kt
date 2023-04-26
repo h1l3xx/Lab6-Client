@@ -10,7 +10,7 @@ import java.nio.channels.DatagramChannel
         @Throws(IOException::class)
         fun startReceiver(): DatagramChannel {
             val receiver = DatagramChannel.open()
-            val address = InetSocketAddress("172.28.110.33", 1050)//localnetwork ip
+            val address = InetSocketAddress("192.168.1.107", 1050)//localnetwork ip
             receiver.bind(address)
 //        println("Receiver started at #$address")
             return receiver

@@ -8,12 +8,8 @@ fun main(){
 
 
         iteration.oneIteration("pizda")
-//        tttt.loop()
-        println(desir())
-        for(i in 0.. desir().size-1){
-                println(desir()[i]["name"])
-        }
-        iteration.othersIteration("zalupa")
+        tttt.createComList()
+
 
 
 }
