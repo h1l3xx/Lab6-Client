@@ -2,6 +2,7 @@ import handkers.Config
 import handkers.Deserializator
 import handkers.Serealiz
 import java.net.InetSocketAddress
+import java.net.PortUnreachableException
 import java.net.SocketAddress
 import java.nio.ByteBuffer
 import java.nio.channels.DatagramChannel
@@ -26,24 +27,27 @@ class Client {
             buffer.get(bytes)
             data = (String(bytes))
         }
-//        data = deser(data)
         return data
     }
 
-    fun getFirstMessage(): String {
-        var data: String? = null
-        while (data.isNullOrEmpty()) {
-            val buffer: ByteBuffer = ByteBuffer.allocate(65535)
-            channel.receive(buffer)
-            buffer.flip()
-            val bytes = ByteArray(buffer.remaining())
-            buffer.get(bytes)
-            data = String(bytes)
-
-        }
-        return data
-    }
-    fun sendMessage(mess: String) {
+//    fun getFirstMessage(): String {
+//        var data: String? = null
+//        while (data.isNullOrEmpty()) {
+//            val buffer: ByteBuffer = ByteBuffer.allocate(65535)
+//            channel.receive(buffer)
+//            buffer.flip()
+//            val bytes = ByteArray(buffer.remaining())
+//            buffer.get(bytes)
+//            data = String(bytes)
+//
+//        }
+//        return data
+//    }
+    fun sendMessage(mess: HashMap<String,String>) {
         channel.send(ByteBuffer.wrap(Serealiz().serialize(mess)!!.toByteArray()), serverAddress)
+    }
+
+    fun check() {
+        print( channel.isConnected);
     }
 }
