@@ -1,17 +1,21 @@
 package command
 
-import handkers.desir
-
-
-
+var commandList: HashMap<String,HashMap<String,String>> = HashMap()
 class CommandList {
-    private var commandList  : HashMap<String, String> = HashMap()
-    fun createComList(){
-        for(i in 0.. desir().size-1){
-            commandList.put(i.toString(), desir()[i]["name"].toString())
+    fun createMapThird(data: List<HashMap<String,String>>):HashMap<String,String>{
+        val secData: HashMap<String,String> = HashMap()
+        for (i in 0..data.size-2){
+            secData["min"] = data[i]["min"].toString()
+            secData["max"] = data[i]["max"].toString()
+            secData["between"] = data[i]["between"].toString()
         }
-        println(commandList.values)
+        return secData
     }
 
+    fun createCL(data: List<HashMap<String,String>>){
+        for (i in 0..data.size-2){
+           commandList[data[i]["name"].toString()] = createMapThird(data)
+        }
+    }
 
 }
