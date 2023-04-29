@@ -1,8 +1,6 @@
 import handkers.Config
-import handkers.Deserializator
-import handkers.Serealiz
+import handkers.Serialization
 import java.net.InetSocketAddress
-import java.net.PortUnreachableException
 import java.net.SocketAddress
 import java.nio.ByteBuffer
 import java.nio.channels.DatagramChannel
@@ -44,10 +42,10 @@ class Client {
 //        return data
 //    }
     fun sendMessage(mess: HashMap<String,String>) {
-        channel.send(ByteBuffer.wrap(Serealiz().serialize(mess)!!.toByteArray()), serverAddress)
+        channel.send(ByteBuffer.wrap(Serialization().serialize(mess)!!.toByteArray()), serverAddress)
     }
 
-    fun check() {
-        print( channel.isConnected);
-    }
+    //fun check() {
+    //    print( channel.isConnected);
+    //}
 }

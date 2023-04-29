@@ -4,11 +4,21 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="56897daf-3d2e-4b31-b449-01c4d4aed976" name="Changes" comment="Initial commit">
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/Client.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/Sender.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
+    <list default="true" id="56897daf-3d2e-4b31-b449-01c4d4aed976" name="Changes" comment="Something">
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/Manager.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/command/CheckFiled.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/command/FileManager.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/command/Validator.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/handkers/MapBuilder.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/kotlinc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/kotlinc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/App.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/App.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/command/CommandList.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/command/CommandList.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/handkers/Client.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/handkers/Client.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/handkers/Config.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/handkers/Config.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/handkers/Deserializator.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/handkers/Deserialization.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/handkers/Serealiz.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/handkers/Serialization.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/handkers/validator.kt" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -30,7 +40,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="f36cb11bfdd80095cb6b3067603e2f64bdf56a30" />
+        <entry key="$PROJECT_DIR$" value="Sasha" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -49,6 +59,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
+    "last.edited.regexp": "(",
     "last_opened_file_path": "C:/Users/Sasha/IdeaProjects/Lab6-Client"
   }
 }]]></component>

@@ -1,5 +1,0 @@
-package handkers
-
-class validator {
-
-}
