@@ -1,6 +1,6 @@
 package command
 
-import uPrinter
+import manager
 
 object Var{
     const val choose = "choose"
@@ -8,6 +8,7 @@ object Var{
     const val id = "id"
     const val exec = "execute_script"
     const val name = "name"
+    const val exit = "Происходит отключение от сервера..."
     const val coordinateX = "coordX"
     const val coordinateY = "coordY"
     const val area = "area"
@@ -42,6 +43,8 @@ val commandList : HashMap<String, HashMap<String, String>> = HashMap()
 var fieldMap : HashMap<String, String> = HashMap()
 class CommandList {
     fun setCommandList(list : List<HashMap<String, String>>): HashMap<String, HashMap<String, String>> {
+        commandList.clear()
+        fieldMap.clear()
 
         for (i in 0..list.size-2){
             val preMap : HashMap<String, String> = HashMap()
@@ -59,11 +62,11 @@ class CommandList {
     fun showCommands(){
         val str = commandList.keys.toString().drop(1).dropLast(1)
         val list = str.split(", ")
-        uPrinter.print { "Список доступных команд:" }
+        manager.uPrinter.print { "Список доступных команд:" }
         for (word in list){
-            uPrinter.print { word }
+            manager.uPrinter.print { word }
         }
-        uPrinter.print { "Чтобы узнать поподробнее о каждой команде, воспользуйтесь командой help." }
+        manager.uPrinter.print { "Чтобы узнать поподробнее о каждой команде, воспользуйтесь командой help." }
     }
     private fun setFieldMap(map: HashMap<String, String>): HashMap<String, String> {
         fieldMap = map

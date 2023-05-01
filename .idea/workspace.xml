@@ -4,21 +4,20 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="56897daf-3d2e-4b31-b449-01c4d4aed976" name="Changes" comment="Something">
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/Manager.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/command/CheckFiled.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/command/FileManager.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/command/Validator.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/handkers/MapBuilder.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/kotlinc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/kotlinc.xml" afterDir="false" />
+    <list default="true" id="56897daf-3d2e-4b31-b449-01c4d4aed976" name="Changes" comment="Validation all commands">
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/command/CheckScript.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/handkers/Connect.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/handkers/Reader.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/handkers/Scanner.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/kotlin/App.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/App.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/Manager.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/Manager.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/kotlin/command/CommandList.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/command/CommandList.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/command/FileManager.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/command/FileManager.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/command/Validator.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/command/Validator.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/kotlin/handkers/Client.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/handkers/Client.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/handkers/Config.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/handkers/Config.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/handkers/Deserializator.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/handkers/Deserialization.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/handkers/Serealiz.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/handkers/Serialization.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/handkers/validator.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/handkers/Deserialization.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/handkers/Deserialization.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/handkers/MapBuilder.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/handkers/MapBuilder.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,21 +47,24 @@
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="ProjectErrors" />
+  </component>
   <component name="ProjectId" id="2OjMmhbdTRIcN8MrVTJLVP7lH6Y" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "last.edited.regexp": "(",
-    "last_opened_file_path": "C:/Users/Sasha/IdeaProjects/Lab6-Client"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last.edited.regexp&quot;: &quot;(&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Sasha/IdeaProjects/Lab6-Client&quot;
   }
-}]]></component>
+}</component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -74,6 +76,7 @@
       <workItem from="1682069703045" duration="419000" />
       <workItem from="1682070181182" duration="39000" />
       <workItem from="1682070506163" duration="1484000" />
+      <workItem from="1682852530866" duration="38644000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit">
       <created>1682069782348</created>
@@ -89,7 +92,14 @@
       <option name="project" value="LOCAL" />
       <updated>1682069866379</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Validation all commands">
+      <created>1682803257961</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1682803257961</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -108,6 +118,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Initial commit" />
-    <option name="LAST_COMMIT_MESSAGE" value="Initial commit" />
+    <MESSAGE value="Validation all commands" />
+    <option name="LAST_COMMIT_MESSAGE" value="Validation all commands" />
   </component>
 </project>

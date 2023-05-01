@@ -1,9 +1,14 @@
 import handkers.Config
 import handkers.Serialization
 import java.net.InetSocketAddress
+import java.net.PortUnreachableException
 import java.net.SocketAddress
 import java.nio.ByteBuffer
 import java.nio.channels.DatagramChannel
+import java.util.concurrent.Executors
+import java.util.concurrent.Future
+import java.util.concurrent.TimeUnit
+
 
 class Client {
     private val serverAddress: SocketAddress = InetSocketAddress(Config.servAdr,Config.port)
@@ -16,16 +21,23 @@ class Client {
     }
 
     fun getMessage(): String {
+        try {
         var data: String? = null
         while (data.isNullOrEmpty()) {
+
             val buffer: ByteBuffer = ByteBuffer.allocate(65535)
+
             channel.receive(buffer)
+
             buffer.flip()
             val bytes = ByteArray(buffer.remaining())
             buffer.get(bytes)
             data = (String(bytes))
         }
-        return data
+            return data
+        }catch (e : PortUnreachableException){
+            return "Отсутствует подключение к серверу, повторная попытка произойдёт через 10 секунд."
+        }
     }
 
 //    fun getFirstMessage(): String {

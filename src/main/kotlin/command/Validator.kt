@@ -1,15 +1,16 @@
 package command
 
+
 import manager
-import scanner
-import uPrinter
+
 import java.time.LocalDate
 import java.time.ZoneId
 import java.time.ZonedDateTime
 import java.time.format.DateTimeFormatter
+import java.util.Scanner
 
 object Messages {
-    const val MESSAGE = "Некорректное количество передаваемых аргументов. Точнее можно узнать в команде help."
+    const val MESSAGE = "Некорректное количество передаваемых аргументов. Точнее можно узнать в команде help. client"
     const val errorValue = "Указано некорректное значение. Введите команду повторно."
     const val errorType = "Ошибка в типе данных"
     const val errorField = "Ошибка. Указанного поля не существует."
@@ -35,17 +36,17 @@ class Validator {
         }
         return false
     }
-    fun checkArguments(command: String, arguments : List<String>) : Boolean{
+    private fun checkArguments(command: String, arguments : List<String>) : Boolean{
         val info = commandList[command]!!
         val size = arguments.size
         if (size > info[Var.max]!!.toInt() || size < info[Var.min]!!.toInt()){
-            uPrinter.print { Messages.MESSAGE }
+            manager.uPrinter.print { Messages.MESSAGE }
             return false}
         else if (size < info[Var.max]!!.toInt() && size > info[Var.min]!!.toInt() && info[Var.between]!!.toString() == Var.False) {
-            uPrinter.print { Messages.MESSAGE }
+            manager.uPrinter.print { Messages.MESSAGE }
             return false
         }else if ((info[Var.max] == info[Var.min]) && info[Var.max]!!.toInt() != size){
-            uPrinter.print {Messages.MESSAGE }
+            manager.uPrinter.print {Messages.MESSAGE }
             return false
         }
         return true
@@ -101,7 +102,7 @@ class Validator {
             }
         }
     }
-    fun setChoose(argument: String, choose : String) : String{
+    private fun setChoose(argument: String, choose : String) : String{
         val listForChoose = choose.split(" ")
         var checker = false
         var returnValue = ""
@@ -117,14 +118,14 @@ class Validator {
             Messages.errorValue
         }
     }
-    fun setBirthday(birthday : String): String{
+    private fun setBirthday(birthday : String): String{
         return if (checkBirthday(birthday)) {
             return birthday
         } else {
             Messages.errorValue
         }
     }
-    fun checkBirthday(birthday : String) : Boolean{
+    private fun checkBirthday(birthday : String) : Boolean{
         return try {
             val formatter: DateTimeFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy")
             val date: LocalDate = LocalDate.parse(birthday, formatter)
@@ -140,13 +141,13 @@ class Validator {
         val checker = CheckFiled()
         return if(checker.check(arguments[0])){
             val type = checker.getType(arguments[0])
-            validateOneArgument(arguments[1], type)
+            arguments[0] + " " + validateOneArgument(arguments[1], type)
         }else{
             Messages.errorField
         }
     }
 
-    fun setToLong(x : String):Any {
+    private fun setToLong(x : String):Any {
         return if (checkToLong(x)) {
             x.toLong()
         } else {
@@ -154,7 +155,7 @@ class Validator {
         }
     }
 
-    fun checkToLong(x : String): Boolean{
+    private fun checkToLong(x : String): Boolean{
         return try {
             x.toLong()
             true
@@ -162,7 +163,7 @@ class Validator {
             false
         }
     }
-    fun setToFloat(y : String): Any {
+    private fun setToFloat(y : String): Any {
         return if (checkToFloat(y)) {
             return y.toFloat()
         } else {
@@ -170,7 +171,7 @@ class Validator {
         }
     }
 
-    fun checkToFloat(y : String) : Boolean{
+    private fun checkToFloat(y : String) : Boolean{
         return try {
             y.toFloat()
             true
@@ -178,14 +179,14 @@ class Validator {
             false
         }
     }
-    fun setToInt(filed : String): Any{
+    private fun setToInt(filed : String): Any{
         return if (checkToInt(filed)) {
             filed.toInt()
         } else {
             Messages.errorValue
         }
     }
-    fun checkToInt(field : String): Boolean{
+    private fun checkToInt(field : String): Boolean{
         return try {
             field.toInt()
             field.toInt() >= 0
@@ -193,7 +194,7 @@ class Validator {
             false
         }
     }
-    fun setToDouble(arg : String) : Any{
+    private fun setToDouble(arg : String) : Any{
         return if (checkToDouble(arg)) {
             return arg.toDouble()
         } else {
@@ -201,7 +202,7 @@ class Validator {
         }
     }
 
-    fun checkToDouble(agl : String) : Boolean{
+    private fun checkToDouble(agl : String) : Boolean{
         return try {
             agl.toDouble()
             true
@@ -209,46 +210,57 @@ class Validator {
             false
         }
     }
-    fun allFields(arguments: List<String>) : String{
+    fun allFields(arguments: List<String>) : String {
         var returnValue = ""
-        if (arguments.isNotEmpty() && checkToInt(arguments[0])){
+        if (arguments.isNotEmpty() && checkToInt(arguments[0]) && arguments.size != 1) {
             returnValue += arguments[0] + " "
-            for (i in 1 until arguments.size){
-                if (!CheckFiled().check(arguments[i])){
+            for (i in 1 until arguments.size) {
+                if (!CheckFiled().check(arguments[i])) {
                     return Messages.errorField
-                } else{
+                } else {
                     returnValue += "${arguments[i]} "
                 }
             }
-        }
-        else{
-            returnValue = if (arguments.isEmpty()){
-                setAllValues()
-            }else{
+        } else {
+            returnValue = if (arguments.isEmpty() || arguments.size == 1) {
+                if (arguments.isEmpty()) {
+                    setAllValues()
+                } else {
+                    arguments[0] + " " + setAllValues()
+                }
+            } else {
                 Messages.errorValue
             }
         }
         return returnValue
     }
     private fun setAllValues() : String{
+        val scanner = handkers.Scanner()
         val regex = Regex(pattern = "\\((.*?)\\)")
         val messages = commandList[Var.add]!![Var.description]!!.split("; ").drop(1)
         val fields = fieldMap.keys.toString().split(", ")
         var arguments = ""
-        for (i in 0..11){
+        for (i in 0..fieldMap.keys.size-1){
             var field = ""
             val afterRegex = regex.find(messages[i])
             if (afterRegex != null){
                 field = afterRegex.value
-                for (f in fields){
-                    if ("($f)" == field){
+                for (f in 0 until fields.size){
+                    var compareField = fields[f]
+                    if (compareField.contains("[")){
+                        compareField = compareField.slice(1 until compareField.length)
+                    }
+                    if (compareField.contains("]")){
+                        compareField = compareField.slice(0..compareField.length-2)
+                    }
+                    if ("($compareField)" == field){
                         var returnValue = ""
                         while (returnValue.equals("")){
-                            uPrinter.print { messages[i] }
-                            val arg = scanner.nextLine()
-                             returnValue = validateOneArgument(arg, fieldMap[f].toString()).toString()
+                            manager.uPrinter.print { messages[i] }
+                            val arg = scanner.readLine()
+                             returnValue = validateOneArgument(arg!!, fieldMap[compareField].toString()).toString()
                             if (returnValue == Messages.errorValue || returnValue == Messages.errorType || returnValue == Messages.errorField){
-                                uPrinter.print { returnValue }
+                                manager.uPrinter.print { returnValue }
                                 returnValue = ""
                             }
                             else{
@@ -262,7 +274,11 @@ class Validator {
         return arguments
     }
     fun workWithFile(a: List<String>) : List<String> {
-        return FileManager().file(a[0]).split(" ,")
+        val returnValue = FileManager().file(a[0]).toString()
+        if (!returnValue.contains("Рекурсия")){
+            return FileManager().file(a[0]).toString().split(" ,")
+        }
+        return emptyList()
     }
 }
 
